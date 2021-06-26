@@ -21,7 +21,7 @@ export class Professional {
   @OneToOne(() => ProfessionalType)
   typeOfProfessional: ProfessionalType;
 
-  @Column()
+  @Column({ default: true })
   state: boolean;
 
   @Column({

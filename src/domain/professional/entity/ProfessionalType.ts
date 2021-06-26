@@ -8,7 +8,7 @@ export class ProfessionalType {
   @Column()
   description: string;
 
-  @Column()
+  @Column({ default: true })
   state: boolean;
 
   @Column({
