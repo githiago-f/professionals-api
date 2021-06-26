@@ -1,10 +1,14 @@
 import { createConnection } from 'typeorm';
 import { Constants } from 'src/utils/constants';
 import { Provider } from '@nestjs/common';
+import { Professional } from 'src/domain/professional/entity/Professional';
+import { ProfessionalType } from 'src/domain/professional/entity/ProfessionalType';
 
 type Env = 'production' | 'test' | 'development';
 
 const entities = [
+  Professional,
+  ProfessionalType
 ];
 
 const databaseProviderMap = (env: Env) => {
@@ -29,6 +33,7 @@ const databaseProviderMap = (env: Env) => {
       useFactory: async () => createConnection({
         type: 'sqlite',
         database: ':memory:',
+        synchronize: true,
         entities
       })
     };
