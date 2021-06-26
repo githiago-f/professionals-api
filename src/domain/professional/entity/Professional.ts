@@ -12,7 +12,7 @@ export class Professional {
   @Column()
   telephone: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column()
@@ -24,9 +24,22 @@ export class Professional {
   @Column()
   state: boolean;
 
-  @Column()
-  updatedAt: Date;
+  @Column({
+    type: 'datetime',
+    transformer: {
+      from:(value)=>new Date(value),
+      to: (val) => val
+    },
+    nullable: true
+  })
+  updatedAt: Date|string;
 
-  @Column()
-  createdAt: Date;
+  @Column({
+    type: 'datetime',
+    transformer: {
+      from: (value) => new Date(value),
+      to: (val) => val
+    }
+  })
+  createdAt: Date|string;
 }
