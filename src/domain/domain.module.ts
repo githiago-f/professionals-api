@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
-import { MainController } from 'src/domain/controllers/main.controller';
-import { MainService } from './services/main.service';
+import { ProfessionalsController } from './professional/controller/ProfessionalsController';
+import { ProfessionalTypeController } from './professional/controller/ProfessionalTypeController';
 
 @Module({
   imports: [],
-  controllers: [MainController],
-  providers: [
-    MainService
+  controllers: [
+    ProfessionalsController,
+    ProfessionalTypeController
   ],
+  providers: [],
 })
 export class DomainModule { }
