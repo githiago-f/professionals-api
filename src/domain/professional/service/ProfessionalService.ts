@@ -18,8 +18,6 @@ export class ProfessionalService {
   public findAllPaged(page = 0, filterOptions?: FilterProfessionals) {
     return this.professionalRepository.find({
       order: {createdAt: 'DESC'},
-      loadRelationIds:false,
-      // relations: ['typeOfProfessional'],
       where: filterOptions ? filterOptions : {
         state: true
       },
@@ -35,7 +33,7 @@ export class ProfessionalService {
         email: professional.email
       }
     });
-    if(!exists||exists>0) {
+    if(exists>0) {
       throw new ProfessionalConflict();
     }
     return this.professionalRepository.save(professional);

@@ -1,4 +1,10 @@
-import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn
+} from 'typeorm';
 import { ProfessionalType } from './ProfessionalType';
 
 @Entity('professionals')
@@ -15,10 +21,13 @@ export class Professional {
   @Column({ unique: true })
   email: string;
 
-  @Column()
-  typeOfProfessionalId: number;
-
-  @OneToOne(() => ProfessionalType)
+  @OneToOne(() => ProfessionalType, {
+    eager: true
+  })
+  @JoinColumn({
+    name: 'typeOfProfessionalId',
+    referencedColumnName: 'id'
+  })
   typeOfProfessional: ProfessionalType;
 
   @Column({ default: true })

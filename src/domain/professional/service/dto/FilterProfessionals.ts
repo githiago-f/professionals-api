@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsOptional } from 'class-validator';
+import { ProfessionalType } from '../../entity/ProfessionalType';
 
 export class FilterProfessionals {
   @ApiProperty({
@@ -21,7 +22,8 @@ export class FilterProfessionals {
   public readonly name?: string;
 
   @ApiProperty({
-    required: false
+    required: false,
+    type: Number
   })
-  public readonly professionalTypeId: number;
+  public readonly professionalType: ProfessionalType;
 }

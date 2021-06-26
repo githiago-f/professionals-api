@@ -7,6 +7,7 @@ import {
   IsPhoneNumber,
   IsString
 } from 'class-validator';
+import { ProfessionalType } from '../../entity/ProfessionalType';
 
 export class CreateProfessionalDTO {
   @ApiProperty({
@@ -33,11 +34,12 @@ export class CreateProfessionalDTO {
   public readonly email: string;
 
   @ApiProperty({
-    example: 1
+    example: 1,
+    type: Number
   })
   @IsNotEmpty()
   @IsNumber()
-  public readonly typeOfProfessionalId: number;
+  public readonly typeOfProfessional: ProfessionalType;
 
   @ApiProperty({
     default: true,

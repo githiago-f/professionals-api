@@ -1,5 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, IsNumber, IsOptional, IsPhoneNumber, IsString } from 'class-validator';
+import { ProfessionalType } from '../../entity/ProfessionalType';
 
 export class UpdateProfessionalDTO {
   @IsNumber()
@@ -23,11 +24,11 @@ export class UpdateProfessionalDTO {
   @IsNotEmpty()
   public readonly email: string;
 
-  @ApiProperty({ required: false })
+  @ApiProperty({ required: false, type: Number })
   @IsOptional()
   @IsNotEmpty()
   @IsNumber()
-  public readonly typeOfProfessionalId: number;
+  public readonly typeOfProfessional: ProfessionalType;
 
   @ApiProperty({
     default: true,
