@@ -4,7 +4,6 @@ import { Repository } from 'typeorm';
 import { CreateProfessionalDTO } from '../dto/professional/CreateProfessionalDTO';
 import { UpdateProfessionalDTO } from '../dto/professional/UpdateProfessionalDTO';
 import { Professional } from '../entity/Professional';
-import { FilterProfessionals } from './dto/FilterProfessionals';
 import { ProfessionalConflict } from './errors/ProfessionalConflict';
 import { ProfessionalNotFound } from './errors/ProfessionalNotFound';
 
@@ -15,14 +14,12 @@ export class ProfessionalService {
     private professionalRepository: Repository<Professional>,
   ) {}
 
-  public findAllPaged(page = 0, filterOptions?: FilterProfessionals) {
+  public findAllPaged(page = 0) {
     return this.professionalRepository.find({
       order: { createdAt: 'DESC' },
-      where: filterOptions
-        ? filterOptions
-        : {
-            state: true,
-          },
+      where: {
+        state: true,
+      },
       take: 10,
       skip: page > 1 ? (page - 1) * 10 : 0,
     });

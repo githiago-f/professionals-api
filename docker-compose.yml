@@ -1,5 +1,9 @@
 version: '3'
 
+networks:
+  app-tier:
+    driver: bridge
+
 services:
   db:
     image: postgres
@@ -17,6 +21,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - app-tier
   app:
     image: fullstack-challenge
     restart: on-failure
@@ -27,4 +33,6 @@ services:
       db:
         condition: service_healthy
     ports:
-      - 8080:8080
+      - 3000:3000
+    networks:
+      - app-tier

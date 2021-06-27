@@ -1,9 +1,11 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
 import { ProfessionalType } from './ProfessionalType';
 
@@ -33,22 +35,9 @@ export class Professional {
   @Column({ default: true })
   state: boolean;
 
-  @Column({
-    type: 'datetime',
-    transformer: {
-      from: value => new Date(value),
-      to: val => val,
-    },
-    nullable: true,
-  })
+  @UpdateDateColumn()
   updatedAt: Date | string;
 
-  @Column({
-    type: 'datetime',
-    transformer: {
-      from: value => new Date(value),
-      to: val => val,
-    },
-  })
+  @CreateDateColumn()
   createdAt: Date | string;
 }
