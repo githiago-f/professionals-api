@@ -16,12 +16,16 @@ export class ProfessionalTypeController {
   }
 
   @Post()
-  public createProfessionalType(@Body() professionalTypeDTO: CreateProfessionalTypeDTO): Promise<ProfessionalType> {
+  public createProfessionalType(
+    @Body() professionalTypeDTO: CreateProfessionalTypeDTO,
+  ): Promise<ProfessionalType> {
     return this.professionalTypeService.create(professionalTypeDTO);
   }
 
   @Patch()
-  public async updateProfessionaType(@Body() professionalTypeDTO: UpdateProfessionalTypeDTO): Promise<ProfessionalType> {
+  public async updateProfessionaType(
+    @Body() professionalTypeDTO: UpdateProfessionalTypeDTO,
+  ): Promise<ProfessionalType> {
     return this.professionalTypeService.update(professionalTypeDTO);
   }
 }

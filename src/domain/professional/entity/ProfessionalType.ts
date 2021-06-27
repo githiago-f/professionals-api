@@ -15,18 +15,18 @@ export class ProfessionalType {
     nullable: true,
     type: 'datetime',
     transformer: {
-      from: (value) => new Date(value),
-      to: (val) => val
-    }
+      from: value => new Date(value),
+      to: val => val,
+    },
   })
-  updatedAt: Date|string;
+  updatedAt: Date | string;
 
   @Column({
     type: 'datetime',
     transformer: {
-      from: (value) => new Date(value),
-      to: (val) => val
-    }
+      from: value => new Date(value),
+      to: val => val,
+    },
   })
-  createdAt: Date|string;
+  createdAt: Date | string;
 }

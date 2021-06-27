@@ -13,22 +13,29 @@ export class ProfessionalsController {
 
   @Get()
   @ApiQuery({
-    name: 'page' ,
+    name: 'page',
     description: 'Professionals page',
     required: false,
-    type: Number
+    type: Number,
   })
-  public async all(@Query('page') page?: number, @Query() filter?: FilterProfessionals): Promise<Professional[]> {
+  public async all(
+    @Query('page') page?: number,
+    @Query() filter?: FilterProfessionals,
+  ): Promise<Professional[]> {
     return this.professionalService.findAllPaged(page, filter);
   }
 
   @Post()
-  public createProfessional(@Body() professionalDto: CreateProfessionalDTO): Promise<Professional> {
+  public createProfessional(
+    @Body() professionalDto: CreateProfessionalDTO,
+  ): Promise<Professional> {
     return this.professionalService.create(professionalDto);
   }
 
   @Patch()
-  public updateProfessional(@Body() professionalDto: UpdateProfessionalDTO): Promise<Professional> {
+  public updateProfessional(
+    @Body() professionalDto: UpdateProfessionalDTO,
+  ): Promise<Professional> {
     return this.professionalService.update(professionalDto);
   }
 }

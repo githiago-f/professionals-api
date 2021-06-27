@@ -8,18 +8,15 @@ import { ProfessionalService } from './professional/service/ProfessionalService'
 import { ProfessionalTypeService } from './professional/service/ProfessionalTypeService';
 
 @Module({
-  imports: [ DatabaseModule ],
+  imports: [DatabaseModule],
   providers: [
     ProfessionalTypeRepository,
     ProfessionalRepository,
     ProfessionalService,
     ProfessionalTypeService,
     ProfessionalSubscriber,
-    ProfessionalTypeSubscriber
+    ProfessionalTypeSubscriber,
   ],
-  exports: [
-    ProfessionalService,
-    ProfessionalTypeService
-  ]
+  exports: [ProfessionalService, ProfessionalTypeService],
 })
-export class DomainModule { }
+export class DomainModule {}

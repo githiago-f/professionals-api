@@ -5,25 +5,25 @@ import { ProfessionalType } from '../../entity/ProfessionalType';
 export class FilterProfessionals {
   @ApiProperty({
     required: false,
-    default: true
+    default: true,
   })
   public readonly state: boolean;
 
   @ApiProperty({
-    required: false
+    required: false,
   })
   @IsEmail()
   @IsOptional()
   public readonly email?: string;
 
   @ApiProperty({
-    required: false
+    required: false,
   })
   public readonly name?: string;
 
   @ApiProperty({
     required: false,
-    type: Number
+    type: Number,
   })
   public readonly professionalType: ProfessionalType;
 }

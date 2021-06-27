@@ -1,9 +1,17 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsNumber, IsOptional, IsString, MaxLength } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsNumber,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 
 export class UpdateProfessionalTypeDTO {
   @ApiProperty({
-    description: 'Professional type identifyer required to perform UPDATE action'
+    description:
+      'Professional type identifyer required to perform UPDATE action',
   })
   @IsNumber()
   id: number;
@@ -11,7 +19,7 @@ export class UpdateProfessionalTypeDTO {
   @ApiProperty({
     description: 'Description of the professional type (aka.: profession)',
     example: 'Teacher',
-    required: false
+    required: false,
   })
   @IsOptional()
   @IsNotEmpty()
@@ -21,7 +29,7 @@ export class UpdateProfessionalTypeDTO {
 
   @ApiProperty({
     required: false,
-    default: true
+    default: true,
   })
   @IsOptional()
   @IsBoolean()

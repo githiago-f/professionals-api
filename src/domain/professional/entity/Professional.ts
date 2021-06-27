@@ -3,7 +3,7 @@ import {
   Entity,
   JoinColumn,
   OneToOne,
-  PrimaryGeneratedColumn
+  PrimaryGeneratedColumn,
 } from 'typeorm';
 import { ProfessionalType } from './ProfessionalType';
 
@@ -22,11 +22,11 @@ export class Professional {
   email: string;
 
   @OneToOne(() => ProfessionalType, {
-    eager: true
+    eager: true,
   })
   @JoinColumn({
     name: 'typeOfProfessionalId',
-    referencedColumnName: 'id'
+    referencedColumnName: 'id',
   })
   typeOfProfessional: ProfessionalType;
 
@@ -36,19 +36,19 @@ export class Professional {
   @Column({
     type: 'datetime',
     transformer: {
-      from:(value)=>new Date(value),
-      to: (val) => val
+      from: value => new Date(value),
+      to: val => val,
     },
-    nullable: true
+    nullable: true,
   })
-  updatedAt: Date|string;
+  updatedAt: Date | string;
 
   @Column({
     type: 'datetime',
     transformer: {
-      from: (value) => new Date(value),
-      to: (val) => val
-    }
+      from: value => new Date(value),
+      to: val => val,
+    },
   })
-  createdAt: Date|string;
+  createdAt: Date | string;
 }

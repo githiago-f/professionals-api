@@ -10,7 +10,7 @@ import { ProfessionalTypeNotFound } from './errors/ProfessionalTypeNotFound';
 export class ProfessionalTypeService {
   constructor(
     @Inject(Constants.providers.professionalType)
-    private professionalTypeRepository: Repository<ProfessionalType>
+    private professionalTypeRepository: Repository<ProfessionalType>,
   ) {}
 
   findAll() {
@@ -18,27 +18,32 @@ export class ProfessionalTypeService {
   }
 
   create(professionalTypeDto: CreateProfessionalTypeDTO) {
-    const professionalType = this.professionalTypeRepository.create(professionalTypeDto);
+    const professionalType = this.professionalTypeRepository.create(
+      professionalTypeDto,
+    );
     return this.professionalTypeRepository.save(professionalType);
   }
 
-  async update(professionalTypeDto: UpdateProfessionalTypeDTO): Promise<ProfessionalType> {
-    const professionalType = this.professionalTypeRepository
-      .create(professionalTypeDto);
+  async update(
+    professionalTypeDto: UpdateProfessionalTypeDTO,
+  ): Promise<ProfessionalType> {
+    const professionalType = this.professionalTypeRepository.create(
+      professionalTypeDto,
+    );
 
-    const exists = await this.professionalTypeRepository
-      .count({
-        where: {
-          id: professionalType.id
-        }
-      });
+    const exists = await this.professionalTypeRepository.count({
+      where: {
+        id: professionalType.id,
+      },
+    });
 
-    if(!exists||exists<1) {
+    if (!exists || exists < 1) {
       throw new ProfessionalTypeNotFound();
     }
-    await this.professionalTypeRepository
-      .update(professionalType.id, professionalType);
-    return this.professionalTypeRepository
-      .findOne(professionalType.id);
+    await this.professionalTypeRepository.update(
+      professionalType.id,
+      professionalType,
+    );
+    return this.professionalTypeRepository.findOne(professionalType.id);
   }
 }

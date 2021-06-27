@@ -5,13 +5,7 @@ import { ProfessionalsController } from './controller/ProfessionalsController';
 import { ProfessionalTypeController } from './controller/ProfessionalTypeController';
 
 @Module({
-  imports: [
-    DatabaseModule,
-    DomainModule,
-  ],
-  controllers: [
-    ProfessionalsController,
-    ProfessionalTypeController
-  ]
+  imports: [DatabaseModule, DomainModule],
+  controllers: [ProfessionalsController, ProfessionalTypeController],
 })
-export class AppModule { }
+export class AppModule {}

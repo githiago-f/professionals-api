@@ -12,17 +12,19 @@ import { ProfessionalNotFound } from './errors/ProfessionalNotFound';
 export class ProfessionalService {
   constructor(
     @Inject(Constants.providers.professional)
-    private professionalRepository: Repository<Professional>
+    private professionalRepository: Repository<Professional>,
   ) {}
 
   public findAllPaged(page = 0, filterOptions?: FilterProfessionals) {
     return this.professionalRepository.find({
-      order: {createdAt: 'DESC'},
-      where: filterOptions ? filterOptions : {
-        state: true
-      },
+      order: { createdAt: 'DESC' },
+      where: filterOptions
+        ? filterOptions
+        : {
+            state: true,
+          },
       take: 10,
-      skip: page > 1 ? ((page-1)*10) : 0
+      skip: page > 1 ? (page - 1) * 10 : 0,
     });
   }
 
@@ -30,10 +32,10 @@ export class ProfessionalService {
     const professional = this.professionalRepository.create(professionalDto);
     const exists = await this.professionalRepository.count({
       where: {
-        email: professional.email
-      }
+        email: professional.email,
+      },
     });
-    if(exists>0) {
+    if (exists > 0) {
       throw new ProfessionalConflict();
     }
     return this.professionalRepository.save(professional);
@@ -43,10 +45,10 @@ export class ProfessionalService {
     const professional = this.professionalRepository.create(professionalDto);
     const exists = await this.professionalRepository.count({
       where: {
-        id: professional.id
-      }
+        id: professional.id,
+      },
     });
-    if(!exists||exists<1){
+    if (!exists || exists < 1) {
       throw new ProfessionalNotFound();
     }
     await this.professionalRepository.update(professional.id, professional);

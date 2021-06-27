@@ -1,10 +1,16 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsOptional, IsString, MaxLength } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MaxLength,
+} from 'class-validator';
 
 export class CreateProfessionalTypeDTO {
   @ApiProperty({
     description: 'Description of the professional type (aka.: profession)',
-    example: 'Teacher'
+    example: 'Teacher',
   })
   @IsNotEmpty()
   @IsString()
@@ -13,7 +19,7 @@ export class CreateProfessionalTypeDTO {
 
   @ApiProperty({
     required: false,
-    default: true
+    default: true,
   })
   @IsOptional()
   @IsBoolean()

@@ -5,13 +5,13 @@ import {
   IsNumber,
   IsOptional,
   IsPhoneNumber,
-  IsString
+  IsString,
 } from 'class-validator';
 import { ProfessionalType } from '../../entity/ProfessionalType';
 
 export class CreateProfessionalDTO {
   @ApiProperty({
-    example: 'Ana'
+    example: 'Ana',
   })
   @IsNotEmpty()
   @IsString()
@@ -19,7 +19,7 @@ export class CreateProfessionalDTO {
 
   @ApiProperty({
     required: false,
-    example: '+55 (51) 99999-0000'
+    example: '+55 (51) 99999-0000',
   })
   @IsOptional()
   @IsPhoneNumber('BR')
@@ -27,7 +27,7 @@ export class CreateProfessionalDTO {
 
   @ApiProperty({
     required: true,
-    example: 'email@email.com'
+    example: 'email@email.com',
   })
   @IsEmail()
   @IsNotEmpty()
@@ -35,7 +35,7 @@ export class CreateProfessionalDTO {
 
   @ApiProperty({
     example: 1,
-    type: Number
+    type: Number,
   })
   @IsNotEmpty()
   @IsNumber()
@@ -43,7 +43,7 @@ export class CreateProfessionalDTO {
 
   @ApiProperty({
     default: true,
-    required: true
+    required: true,
   })
   @IsOptional()
   public readonly state: boolean;
