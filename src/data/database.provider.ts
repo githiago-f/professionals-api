@@ -6,7 +6,10 @@ import { ProfessionalType } from 'src/domain/professional/entity/ProfessionalTyp
 
 type Env = 'production' | 'test' | 'development';
 
-const entities = [Professional, ProfessionalType];
+const entities = [
+  Professional,
+  ProfessionalType
+];
 
 const databaseProviderMap = (env: Env) => {
   switch (env) {

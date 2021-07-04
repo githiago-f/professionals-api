@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { DatabaseModule } from 'src/data/database.module';
 import { ProfessionalRepository } from './professional/repository/ProfessionalRepository';
 import { ProfessionalTypeRepository } from './professional/repository/ProfessionalTypeRepository';
+import { PhotosService } from './professional/service/PhotosService';
 import { ProfessionalService } from './professional/service/ProfessionalService';
 import { ProfessionalTypeService } from './professional/service/ProfessionalTypeService';
 
@@ -12,7 +13,12 @@ import { ProfessionalTypeService } from './professional/service/ProfessionalType
     ProfessionalRepository,
     ProfessionalService,
     ProfessionalTypeService,
+    PhotosService,
   ],
-  exports: [ProfessionalService, ProfessionalTypeService],
+  exports: [
+    ProfessionalService,
+    ProfessionalTypeService,
+    PhotosService
+  ],
 })
 export class DomainModule {}

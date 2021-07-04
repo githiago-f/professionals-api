@@ -32,6 +32,9 @@ export class Professional {
   })
   typeOfProfessional: ProfessionalType;
 
+  @Column({ nullable: true })
+  profilePic: string;
+
   @Column({ default: true })
   state: boolean;
 
